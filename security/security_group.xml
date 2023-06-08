@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="wt_alert_categ" model="ir.module.category">
+            <field name="name">التنبيهات</field>
+            <field name="sequence" eval="1"/>
+        </record>
+        <record id="document_expiry_reminder_group" model="res.groups">
+            <field name="name">Document Expiry Reminder</field>
+        </record>
+        <record id="wt_alert_user" model="res.groups">
+            <field name="name">مستخدم</field>
+            <field name="category_id" ref="wt_alerts.wt_alert_categ"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <record id="rule_wt_alert_user" model="ir.rule">
+            <field name="name">Access user documents</field>
+            <field name="model_id" ref="model_document_alerts"/>
+            <field name="groups" eval="[(4, ref('wt_alerts.wt_alert_user'))]"/>
+            <field name="domain_force">[('create_uid','=', user.id)]</field>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+        <record id="wt_alert_manager" model="res.groups">
+            <field name="name">مدير</field>
+            <field name="category_id" ref="wt_alerts.wt_alert_categ"/>
+            <field name="implied_ids"
+                   eval="[(4, ref('wt_alerts.wt_alert_user'))]"/>
+        </record>
+        <record id="rule_wt_alert_manager" model="ir.rule">
+            <field name="name">Access manager all documents</field>
+            <field name="model_id" ref="model_document_alerts"/>
+            <field name="groups" eval="[(4, ref('wt_alerts.wt_alert_manager'))]"/>
+            <field name="domain_force">[(1,'=', 1)]</field>
+        </record>
+    </data>
+</odoo>

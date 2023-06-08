@@ -1,0 +1,269 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* wt_alerts
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e-20220411\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-28 02:11+0000\n"
+"PO-Revision-Date: 2022-08-28 02:11+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_days_reminder_line__ndays
+msgid "# of Days Before Expiry Date"
+msgstr "عدد الأيام قبل تاريخ انتهاء الصلاحية"
+
+#. module: wt_alerts
+#: model:ir.model.fields.selection,name:wt_alerts.selection__days_reminder_line__type__after
+msgid "After"
+msgstr "بعد"
+
+#. module: wt_alerts
+#: model:ir.ui.menu,name:wt_alerts.alert_alert
+#: model:ir.ui.menu,name:wt_alerts.document_alert_root
+msgid "Alerts"
+msgstr "التنبيهات"
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__attach_type
+msgid "Attach Type"
+msgstr "نوع المرفق"
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__attachment_name
+msgid "Attachment Name"
+msgstr "اسم المرفق"
+
+#. module: wt_alerts
+#: model:ir.model.fields.selection,name:wt_alerts.selection__days_reminder_line__type__before
+msgid "Before"
+msgstr "قبل"
+
+#. module: wt_alerts
+#: model:ir.model,name:wt_alerts.model_res_config_settings
+msgid "Config Settings"
+msgstr "ضبط الاعدادات"
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_days_reminder_line__create_uid
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__create_uid
+#: model:ir.model.fields,field_description:wt_alerts.field_document_type__create_uid
+msgid "Created by"
+msgstr "أنشي بواسطة"
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_days_reminder_line__create_date
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__create_date
+#: model:ir.model.fields,field_description:wt_alerts.field_document_type__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_res_config_settings__days_reminder_ids
+msgid "Days Reminder"
+msgstr "مواعيد التذكير"
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__desc
+msgid "Desc"
+msgstr "الوصف"
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_days_reminder_line__name
+#: model_terms:ir.ui.view,arch_db:wt_alerts.document_alerts_view_form
+msgid "Description"
+msgstr "الوصف"
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_days_reminder_line__display_name
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__display_name
+#: model:ir.model.fields,field_description:wt_alerts.field_document_type__display_name
+#: model:ir.model.fields,field_description:wt_alerts.field_mail_mail__display_name
+#: model:ir.model.fields,field_description:wt_alerts.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: wt_alerts
+#: model:ir.actions.server,name:wt_alerts.ir_cron_document_alert_expiry_notify_ir_actions_server
+#: model:ir.cron,cron_name:wt_alerts.ir_cron_document_alert_expiry_notify
+#: model:ir.cron,name:wt_alerts.ir_cron_document_alert_expiry_notify
+msgid "Document Alert Expiry :Reminder"
+msgstr "انتهاء صلاحية تنبيه المستند: تذكير"
+
+#. module: wt_alerts
+#: model:ir.actions.act_window,name:wt_alerts.action_alert_alert
+#: model:ir.model,name:wt_alerts.model_document_alerts
+msgid "Document Alerts"
+msgstr "التنبيهات"
+
+#. module: wt_alerts
+#: model:res.groups,name:wt_alerts.document_expiry_reminder_group
+msgid "Document Expiry Reminder"
+msgstr "تذكير انتهاء صلاحية المستند"
+
+#. module: wt_alerts
+#: model:ir.model,name:wt_alerts.model_document_type
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__document_type_id
+msgid "Document Type"
+msgstr "النوع"
+
+#. module: wt_alerts
+#: model:ir.actions.act_window,name:wt_alerts.action_document_alert
+msgid "Document Types"
+msgstr "انواع المستندات"
+
+#. module: wt_alerts
+#: model:ir.ui.menu,name:wt_alerts.document_alert
+msgid "Documents Type"
+msgstr "انواع المستندات"
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__email_cc
+msgid "Email CC"
+msgstr "ايميلات CC"
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__employee_ids
+msgid "Employee"
+msgstr "الموظفون"
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__expiry_date
+msgid "Expiry Date"
+msgstr "تاريخ الإنتهاء"
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_days_reminder_line__id
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__id
+#: model:ir.model.fields,field_description:wt_alerts.field_document_type__id
+#: model:ir.model.fields,field_description:wt_alerts.field_mail_mail__id
+#: model:ir.model.fields,field_description:wt_alerts.field_res_config_settings__id
+msgid "ID"
+msgstr "المُعرف"
+
+#. module: wt_alerts
+#: model:ir.model.fields.selection,name:wt_alerts.selection__document_alerts__attach_type__image
+msgid "IMAGE"
+msgstr "صورة"
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__image_attach
+msgid "Image"
+msgstr "صورة"
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_days_reminder_line____last_update
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts____last_update
+#: model:ir.model.fields,field_description:wt_alerts.field_document_type____last_update
+#: model:ir.model.fields,field_description:wt_alerts.field_mail_mail____last_update
+#: model:ir.model.fields,field_description:wt_alerts.field_res_config_settings____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_days_reminder_line__write_uid
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__write_uid
+#: model:ir.model.fields,field_description:wt_alerts.field_document_type__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_days_reminder_line__write_date
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__write_date
+#: model:ir.model.fields,field_description:wt_alerts.field_document_type__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__name
+msgid "Name"
+msgstr "الرقم"
+
+#. module: wt_alerts
+#: model_terms:ir.ui.view,arch_db:wt_alerts.document_alerts_view_form
+msgid "Notes"
+msgstr "الملاحظات"
+
+#. module: wt_alerts
+#: model:ir.model,name:wt_alerts.model_mail_mail
+msgid "Outgoing Mails"
+msgstr "الرسائل الصادرة"
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__pdf_attach
+#: model:ir.model.fields.selection,name:wt_alerts.selection__document_alerts__attach_type__pdf
+msgid "PDF"
+msgstr "بي دي اف"
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__partner_ids
+msgid "Partner"
+msgstr "العملاء"
+
+#. module: wt_alerts
+#: model_terms:ir.ui.view,arch_db:wt_alerts.document_alerts_view_form
+msgid "Receivers"
+msgstr "إرسال إلي"
+
+#. module: wt_alerts
+#: model:ir.actions.act_window,name:wt_alerts.action_reminder_temp
+#: model:ir.ui.menu,name:wt_alerts.reminder_temp
+msgid "Reminder Templates"
+msgstr "نماذج التذكير"
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__reminder_ids
+msgid "Reminders"
+msgstr "نماذج التذكير"
+
+#. module: wt_alerts
+#: model:ir.ui.menu,name:wt_alerts.alerts_settings_categ
+msgid "Settings"
+msgstr "الإعدادت"
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_days_reminder_line__type
+msgid "Type"
+msgstr "النوع"
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__user_id
+msgid "User"
+msgstr "المستخدم"
+
+#. module: wt_alerts
+#: model:ir.model,name:wt_alerts.model_days_reminder_line
+msgid "days.reminder.line"
+msgstr ""
+
+#. module: wt_alerts
+#: model_terms:ir.ui.view,arch_db:wt_alerts.days_reminder_line_view_form
+msgid "days_reminder_line_form"
+msgstr ""
+
+#. module: wt_alerts
+#: model_terms:ir.ui.view,arch_db:wt_alerts.days_reminder_line_view_tree
+msgid "days_reminder_line_tree"
+msgstr ""
+
+#. module: wt_alerts
+#: model_terms:ir.ui.view,arch_db:wt_alerts.document_alerts_view_form
+msgid "document_alerts_form"
+msgstr ""
+
+#. module: wt_alerts
+#: model_terms:ir.ui.view,arch_db:wt_alerts.document_alerts_view_tree
+msgid "document_alerts_tree"
+msgstr ""
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_document_type__name
+msgid "name"
+msgstr "الاسم"

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="document_alerts_view_form" model="ir.ui.view">
+            <field name="name">document_alerts_view_form</field>
+            <field name="model">document.alerts</field>
+            <field name="arch" type="xml">
+                <form string="document_alerts_form">
+                    <sheet>
+                        <group col="4">
+                            <field name="name" readonly="1"/>
+                            <field name="document_type_id" required="1"/>
+                            <field name="reminder_ids" widget="many2many_tags" required="1"/>
+                            <field name="expiry_date" required="1"/>
+                            <field name="attach_type" widget="radio" filename="attachment_name" required="0"/>
+
+
+                        </group>
+                        <field name="image_attach" widget="image" width="50%" filename="attachment_name"
+                               attrs="{'invisible':[('attach_type','!=','IMAGE')]}"/>
+                        <field name="pdf_attach" widget="pdf_viewer" filename="attachment_name" width="50%"
+                               attrs="{'invisible':[('attach_type','!=','PDF')]}"/>
+                        <!--<group col="4">
+                        </group>-->
+                        <notebook>
+                            <page name="Receivers" string="Receivers">
+                                <group col="4">
+                                    <field name="partner_ids" widget="many2many_tags"/>
+                                    <field name="employee_ids" widget="many2many_tags"/>
+                                    <field name="user_id"/>
+                                    <field name="email_cc"/>
+                                </group>
+                            </page>
+                            <page name="Notes" string="Notes">
+                                <group>
+                                    <field placeholder="Description" nolabel="1" name="desc"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="document_alerts_view_tree" model="ir.ui.view">
+            <field name="name">document_alerts_view_tree</field>
+            <field name="model">document.alerts</field>
+            <field name="arch" type="xml">
+                <tree string="document_alerts_tree">
+                    <field name="name"/>
+                    <field name="document_type_id"/>
+                    <field name="attach_type"/>
+                    <field name="expiry_date"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_alert_alert" model="ir.actions.act_window">
+            <field name="name">Document Alerts</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">document.alerts</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="alert_alert" name="Alerts" parent="document_alert_root" action="action_alert_alert" sequence="1"/>
+    </data>
+</odoo>

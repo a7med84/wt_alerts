@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--<record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.document.alert</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="45"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" data-string="Document Alerts" string="Alerts" data-key="wt_alerts">
+                        <h2>Document Alerts</h2>
+                        <div class="row mt16 o_settings_container" id="document_alerts">
+                            <div class="text-muted" style="font-weight:900;font-color:black">
+                                <span>Set N Days before send document expiry reminder</span>
+                            </div>
+                            <div>
+                                <field name="days_reminder_ids">
+                                    <tree editable="top">
+                                        <field name="name"/>
+                                        &lt;!&ndash;<field name="type"/>&ndash;&gt;
+                                        <field name="ndays"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_alert_settings" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'wt_alerts'}</field>
+        </record>
+
+
+        <menuitem id="alerts_settings"
+                  name="Settings"
+                  parent="alerts_settings_categ"
+                  sequence="99"
+                  action="action_alert_settings"/>-->
+
+        <record id="days_reminder_line_view_form" model="ir.ui.view">
+            <field name="name">days_reminder_line_view_form</field>
+            <field name="model">days.reminder.line</field>
+            <field name="arch" type="xml">
+                <form string="days_reminder_line_form">
+                    <sheet>
+                        <group>
+                            <field name="name" required="1"/>
+                            <field name="ndays" required="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="days_reminder_line_view_tree" model="ir.ui.view">
+            <field name="name">days_reminder_line_view_tree</field>
+            <field name="model">days.reminder.line</field>
+            <field name="arch" type="xml">
+                <tree string="days_reminder_line_tree" editable="bottom">
+                    <field name="name" required="1"/>
+                    <field name="ndays" required="1"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_reminder_temp" model="ir.actions.act_window">
+            <field name="name">Reminder Templates</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">days.reminder.line</field>
+            <field name="view_mode">tree</field>
+        </record>
+        <menuitem id="reminder_temp" name="Reminder Templates" parent="alerts_settings_categ" action="action_reminder_temp"
+                  sequence="2"/>
+    </data>
+</odoo>

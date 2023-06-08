@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="document_type_view_form" model="ir.ui.view">
+            <field name="name">document_type_view_form</field>
+            <field name="model">document.type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" required="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="document_type_view_tree" model="ir.ui.view">
+            <field name="name">document_type_view_tree</field>
+            <field name="model">document.type</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_document_alert" model="ir.actions.act_window">
+            <field name="name">Document Types</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">document.type</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem id="document_alert_root" name="Alerts" sequence="2" groups="wt_alerts.wt_alert_user"/>
+        <menuitem id="alerts_settings_categ"
+                  name="Settings"
+                  parent="document_alert_root"
+                  sequence="99"
+                  groups="wt_alerts.wt_alert_manager"
+        />
+        <menuitem id="document_alert" name="Documents Type" parent="alerts_settings_categ" action="action_document_alert"
+                  sequence="1"/>
+    </data>
+</odoo>
