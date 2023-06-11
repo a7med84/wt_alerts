@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0+e-20220411\n"
+"Project-Id-Version: Odoo Server 14.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-28 02:11+0000\n"
-"PO-Revision-Date: 2022-08-28 02:11+0000\n"
+"POT-Creation-Date: 2023-06-11 08:09+0000\n"
+"PO-Revision-Date: 2023-06-11 08:09+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,9 +21,89 @@ msgid "# of Days Before Expiry Date"
 msgstr "عدد الأيام قبل تاريخ انتهاء الصلاحية"
 
 #. module: wt_alerts
+#: model:mail.template,body_html:wt_alerts.email_template_wt_document_alerts
+msgid ""
+"<center dir=\"rtl\" style=\"background-color: #ffffff; font-size: 16px;\">\n"
+"                            <table dir=\"rtl\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"width:600px;\">\n"
+"                                <tbody>\n"
+"                                    <tr align=\"right\">\n"
+"                                        <td style=\"padding:10px\">\n"
+"                                            مرحباً,\n"
+"                                        </td>\n"
+"                                    </tr>\n"
+"                                    <tr>\n"
+"                                        <td style=\"padding:10px\">\n"
+"                                            تذكير بموعد: <strong>${object.document_type_id.name}.</strong>\n"
+"                                            % if object.desc:\n"
+"                                            <br>\n"
+"                                                ${object.desc}.\n"
+"                                            </br>\n"
+"                                            % endif\n"
+"                                        </td>\n"
+"                                    </tr>\n"
+"                                    <tr>\n"
+"                                        <td style=\"padding:10px\">\n"
+"                                            الوثيقة #:\n"
+"                                            <a href=\"${object.alert_url}\" target=\"_BLANK\" style=\"background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px;;\">\n"
+"                                                ${object.name}</a>\n"
+"                                        </td>\n"
+"                                    </tr>\n"
+"                                    <tr>\n"
+"                                        <td style=\"padding:10px\">الأيام المتبقية: ${object.remaining_days}</td>\n"
+"                                    </tr>\n"
+"                                    <tr>\n"
+"                                        <td style=\"padding:10px\"> طاب يومكم</td>\n"
+"                                    </tr>\n"
+"                                </tbody>\n"
+"                            </table>\n"
+"                            \n"
+"                            <div style=\"width:600px; height:5px; background-color:#875A7B; margin:10px\"/>\n"
+"\n"
+"                            <table dir=\"ltr\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"width:600px;\">\n"
+"                                <tbody>\n"
+"                                    <tr align=\"left\">\n"
+"                                        <td style=\"padding:10px\">\n"
+"                                            Hello,\n"
+"                                        </td>\n"
+"                                    </tr>\n"
+"                                    <tr>\n"
+"                                        <td style=\"padding:10px\">\n"
+"                                            Reminder of: <strong>${object.document_type_id.name}.</strong>\n"
+"                                            % if object.desc:\n"
+"                                            <br>\n"
+"                                                ${object.desc}.\n"
+"                                            </br>\n"
+"                                            % endif\n"
+"                                        </td>\n"
+"                                    </tr>\n"
+"                                    <tr>\n"
+"                                        <td style=\"padding:10px\">\n"
+"                                            Document #:\n"
+"                                            <a href=\"${object.alert_url}\" target=\"_BLANK\" style=\"background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px;\">\n"
+"                                                ${object.name}</a>\n"
+"                                        </td>\n"
+"                                    </tr>\n"
+"                                    <tr>\n"
+"                                        <td style=\"padding:10px\">Remaining days: ${object.remaining_days}</td>\n"
+"                                    </tr>\n"
+"                                    <tr>\n"
+"                                        <td style=\"padding:10px\">Good day</td>\n"
+"                                    </tr>\n"
+"                                </tbody>\n"
+"                            </table>\n"
+"                        </center>\n"
+"            "
+msgstr ""
+
+#. module: wt_alerts
 #: model:ir.model.fields.selection,name:wt_alerts.selection__days_reminder_line__type__after
 msgid "After"
 msgstr "بعد"
+
+#. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__alert_url
+msgid "Alert Url"
+msgstr "رابط التنبيه"
 
 #. module: wt_alerts
 #: model:ir.ui.menu,name:wt_alerts.alert_alert
@@ -63,7 +143,7 @@ msgstr "أنشي بواسطة"
 #: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__create_date
 #: model:ir.model.fields,field_description:wt_alerts.field_document_type__create_date
 msgid "Created on"
-msgstr ""
+msgstr "أنشي في"
 
 #. module: wt_alerts
 #: model:ir.model.fields,field_description:wt_alerts.field_res_config_settings__days_reminder_ids
@@ -130,6 +210,11 @@ msgid "Email CC"
 msgstr "ايميلات CC"
 
 #. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__email_to
+msgid "Email To"
+msgstr "مرسل إلى"
+
+#. module: wt_alerts
 #: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__employee_ids
 msgid "Employee"
 msgstr "الموظفون"
@@ -159,6 +244,11 @@ msgid "Image"
 msgstr "صورة"
 
 #. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__is_sendable
+msgid "Is Sendable"
+msgstr "قابل للإرسال"
+
+#. module: wt_alerts
 #: model:ir.model.fields,field_description:wt_alerts.field_days_reminder_line____last_update
 #: model:ir.model.fields,field_description:wt_alerts.field_document_alerts____last_update
 #: model:ir.model.fields,field_description:wt_alerts.field_document_type____last_update
@@ -172,14 +262,14 @@ msgstr "آخر تعديل في"
 #: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__write_uid
 #: model:ir.model.fields,field_description:wt_alerts.field_document_type__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "مؤدي آخر تحديث"
 
 #. module: wt_alerts
 #: model:ir.model.fields,field_description:wt_alerts.field_days_reminder_line__write_date
 #: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__write_date
 #: model:ir.model.fields,field_description:wt_alerts.field_document_type__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "تاريخ آخر تحديث"
 
 #. module: wt_alerts
 #: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__name
@@ -213,6 +303,11 @@ msgid "Receivers"
 msgstr "إرسال إلي"
 
 #. module: wt_alerts
+#: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__remaining_days
+msgid "Remaining Days"
+msgstr "الأيام المتبقية"
+
+#. module: wt_alerts
 #: model:ir.actions.act_window,name:wt_alerts.action_reminder_temp
 #: model:ir.ui.menu,name:wt_alerts.reminder_temp
 msgid "Reminder Templates"
@@ -222,6 +317,11 @@ msgstr "نماذج التذكير"
 #: model:ir.model.fields,field_description:wt_alerts.field_document_alerts__reminder_ids
 msgid "Reminders"
 msgstr "نماذج التذكير"
+
+#. module: wt_alerts
+#: model_terms:ir.ui.view,arch_db:wt_alerts.document_alerts_view_form
+msgid "Send by Email"
+msgstr "إرسال بالبريد الإلكتروني"
 
 #. module: wt_alerts
 #: model:ir.ui.menu,name:wt_alerts.alerts_settings_categ
@@ -256,7 +356,7 @@ msgstr ""
 #. module: wt_alerts
 #: model_terms:ir.ui.view,arch_db:wt_alerts.document_alerts_view_form
 msgid "document_alerts_form"
-msgstr ""
+msgstr "نموذج تنبيه المستندات"
 
 #. module: wt_alerts
 #: model_terms:ir.ui.view,arch_db:wt_alerts.document_alerts_view_tree
@@ -267,3 +367,23 @@ msgstr ""
 #: model:ir.model.fields,field_description:wt_alerts.field_document_type__name
 msgid "name"
 msgstr "الاسم"
+
+#. module: wt_alerts
+#: model:ir.module.category,name:wt_alerts.wt_alert_categ
+msgid "Alerts"
+msgstr "التنبيهات"
+
+#. module: wt_alerts
+#: model:mail.template,subject:wt_alerts.email_template_wt_document_alerts
+msgid "تذكير بموعد: ${object.document_type_id.name} - ${object.expiry_date}"
+msgstr ""
+
+#. module: wt_alerts
+#: model:res.groups,name:wt_alerts.wt_alert_manager
+msgid "Manager"
+msgstr "مدير"
+
+#. module: wt_alerts
+#: model:res.groups,name:wt_alerts.wt_alert_user
+msgid "User"
+msgstr "مستخدم"

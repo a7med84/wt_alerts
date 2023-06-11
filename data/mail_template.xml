@@ -1,0 +1,92 @@
+<?xml version="1.0" ?>
+<odoo>
+
+    <!-- Mail template are declared in a NOUPDATE block
+         so users can freely customize/delete them -->
+    <data noupdate="1">
+        <!--Email template -->
+        <record id="email_template_wt_document_alerts" model="mail.template">
+            <field name="name">Alert: Send by email</field>
+            <field name="model_id" ref="wt_alerts.model_document_alerts"/>
+            <field name="email_from">no-reply@wtsaudi.com</field>
+            <field name="email_to">${object.email_to}</field>
+            <field name="email_cc">${object.email_cc}</field>
+            <field name="subject">تذكير بموعد: ${object.document_type_id.name} - ${object.expiry_date}</field>
+            <field name="body_html" type="html">
+                        <center dir="rtl" style="background-color: #ffffff; font-size: 16px;">
+                            <table dir="rtl" border="0" cellpadding="0" cellspacing="0" style="width:600px;">
+                                <tbody>
+                                    <tr align="right">
+                                        <td style="padding:10px">
+                                            مرحباً,
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:10px">
+                                            تذكير بموعد: <strong>${object.document_type_id.name}.</strong>
+                                            % if object.desc:
+                                            <br>
+                                                ${object.desc}.
+                                            </br>
+                                            % endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:10px">
+                                            الوثيقة #:
+                                            <a href="${object.alert_url}" target="_BLANK"
+                                                style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px;;">
+                                                ${object.name}</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:10px">الأيام المتبقية: ${object.remaining_days}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:10px"> طاب يومكم</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <div style="width:600px; height:5px; background-color:#875A7B; margin:10px"></div>
+
+                            <table dir="ltr" border="0" cellpadding="0" cellspacing="0" style="width:600px;">
+                                <tbody>
+                                    <tr align="left">
+                                        <td style="padding:10px">
+                                            Hello,
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:10px">
+                                            Reminder of: <strong>${object.document_type_id.name}.</strong>
+                                            % if object.desc:
+                                            <br>
+                                                ${object.desc}.
+                                            </br>
+                                            % endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:10px">
+                                            Document #:
+                                            <a href="${object.alert_url}" target="_BLANK"
+                                                style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px;">
+                                                ${object.name}</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:10px">Remaining days: ${object.remaining_days}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:10px">Good day</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </center>
+            </field>
+            <field name="lang">ar_001</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+    </data>
+</odoo>

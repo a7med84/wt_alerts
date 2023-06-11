@@ -2,14 +2,14 @@
 <odoo>
     <data>
         <record id="wt_alert_categ" model="ir.module.category">
-            <field name="name">التنبيهات</field>
+            <field name="name">Alerts</field>
             <field name="sequence" eval="1"/>
         </record>
         <record id="document_expiry_reminder_group" model="res.groups">
             <field name="name">Document Expiry Reminder</field>
         </record>
         <record id="wt_alert_user" model="res.groups">
-            <field name="name">مستخدم</field>
+            <field name="name">User</field>
             <field name="category_id" ref="wt_alerts.wt_alert_categ"/>
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
@@ -22,7 +22,7 @@
             <field name="perm_unlink" eval="0"/>
         </record>
         <record id="wt_alert_manager" model="res.groups">
-            <field name="name">مدير</field>
+            <field name="name">Manager</field>
             <field name="category_id" ref="wt_alerts.wt_alert_categ"/>
             <field name="implied_ids"
                    eval="[(4, ref('wt_alerts.wt_alert_user'))]"/>

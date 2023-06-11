@@ -14,6 +14,7 @@
         'views/alerts.xml',
         'views/config.xml',
         'data/data.xml',
+        'data/mail_template.xml',
     ],
     'installable': True,
     'auto_install': False,

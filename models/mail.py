@@ -133,6 +133,7 @@ class MailMail(models.Model):
             email_cc = rec.email_cc
             reply_to = rec.reply_to
             email_to_false = False
+
             if email_to:
                 for i in email_to:
                     if i == "<" or i == ">":
@@ -216,6 +217,8 @@ class MailMail(models.Model):
             else:
 
                 response_data = request_response.json()
+                print('x' * 100)
+                print(response_data)
                 # token = response_data.get('access_token')
                 # print("response_data:", response_data['message'])
         return
