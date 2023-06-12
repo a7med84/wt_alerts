@@ -1,3 +1,5 @@
+import logging
+
 from odoo import fields, models, api, _
 
 import base64
@@ -8,6 +10,8 @@ from email.message import EmailMessage
 import re
 import email as eee
 from urllib3.filepost import encode_multipart_formdata
+
+_logger = logging.getLogger(__name__)
 
 
 class MailMail(models.Model):
@@ -217,8 +221,7 @@ class MailMail(models.Model):
             else:
 
                 response_data = request_response.json()
-                print('x' * 100)
-                print(response_data)
+                _logger.error(response_data)
                 # token = response_data.get('access_token')
                 # print("response_data:", response_data['message'])
         return

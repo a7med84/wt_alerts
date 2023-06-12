@@ -8,10 +8,10 @@
                 <form string="document_alerts_form">
                     <header>
                         <field name="is_sendable" invisible="1"/>
-                        <button name="action_send_email" type="object" string="Send by Email" class="oe_highlight" attrs="{'invisible': [('is_sendable', '=', False)]}"/>
+                        <button name="action_send_email" type="object" string="Send by Email" class="oe_read_only oe_highlight" attrs="{'invisible': [('is_sendable', '=', False)]}"/>
                     </header>
                     <sheet>
-                        <group col="4">
+                         <group col="4">
                             <field name="name" readonly="1"/>
                             <field name="document_type_id" required="1"/>
                             <field name="reminder_ids" widget="many2many_tags" required="1"/>

@@ -1,8 +1,12 @@
+import logging
+import re
+
 from odoo import fields, models, api
 from ast import literal_eval
 from odoo.exceptions import ValidationError
 from dateutil.relativedelta import relativedelta
-import re
+
+_logger = logging.getLogger(__name__)
 
 
 class DocumentAlerts(models.Model):
@@ -31,6 +35,7 @@ class DocumentAlerts(models.Model):
     email_to = fields.Text(compute='_compute_email_to')
     remaining_days = fields.Integer(compute='_compute_remaining_days')
     is_sendable = fields.Boolean(compute='_compute_is_sendable')
+    is_expired = fields.Boolean(compute='_compute_is_expired')
 
 
     @api.onchange('email_cc')
@@ -83,16 +88,28 @@ class DocumentAlerts(models.Model):
             rec.remaining_days = delta.days
 
 
-    @api.depends('reminder_ids', 'user_id', 'employee_ids', 'email_cc')
+    @api.depends('user_id', 'employee_ids', 'email_cc', 'document_type_id', 'is_expired')
     def _compute_is_sendable(self):
         for rec in self:
-            rec.is_sendable = (not self.is_expired) and (self.email_to or self.email_cc)
+            _logger.info(' Compute Is Sendable ')
+            _logger.info(f'Not expired = {not rec.is_expired}')
+            _logger.info( f'Has emails = {rec.email_to or rec.email_cc}')
+            _logger.info(f'All condition = {(not rec.is_expired) and (rec.email_to or rec.email_cc) and rec.document_type_id}')
+
+            rec.is_sendable = (not rec.is_expired) and (rec.email_to or rec.email_cc) and rec.document_type_id
 
     
-    @property
-    def is_expired(self):
-        print(self.expiry_date, fields.date.today(), self.expiry_date < fields.date.today())
-        return self.expiry_date < fields.date.today()
+    @api.depends('expiry_date')
+    def _compute_is_expired(self):
+        for rec in self:
+            _logger.info(' Compute Is Expired ')
+            _logger.info(f'Expiry date: {rec.expiry_date}')
+            _logger.info(f'Is Expired: {rec.expiry_date < fields.date.today()}')
+
+            if rec.expiry_date:
+                rec.is_expired = rec.expiry_date < fields.date.today()
+            else:
+                rec.is_expired = True
     
 
     def action_send_email(self):
