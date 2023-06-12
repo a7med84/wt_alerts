@@ -15,14 +15,22 @@ class DocumentAlerts(models.Model):
 
     name = fields.Char(default="New")
     reminder_ids = fields.Many2many(comodel_name='days.reminder.line', string='Reminders', store=True)
-    partner_ids = fields.Many2many(comodel_name='res.partner', string='Partner')
+    partner_ids = fields.Many2many(
+        comodel_name='res.partner', 
+        string='Partner',
+        domain=lambda self:[("email", "!=", False),]
+        )
     user_id = fields.Many2one(
             comodel_name='res.users',
             string='User',
             domain=lambda self:[("groups_id", "=", self.env.ref("base.group_user").id),]
         )
     
-    employee_ids = fields.Many2many(comodel_name='hr.employee', string='Employee')
+    employee_ids = fields.Many2many(
+        comodel_name='hr.employee', 
+        string='Employee',
+        domain=lambda self:[("work_email", "!=", False),]
+        )
     document_type_id = fields.Many2one(comodel_name='document.type', string='Document Type')
     attach_type = fields.Selection(string='Attach Type', selection=[('PDF', 'PDF'), ('IMAGE', 'IMAGE'), ])
     attachment_name = fields.Char()
@@ -73,12 +81,18 @@ class DocumentAlerts(models.Model):
     def _compute_email_to(self):
         permitted_emails = [user.partner_id.email for user in self.env.ref('wt_alerts.document_expiry_reminder_group').users if user.partner_id.email]
         for rec in self:
+            _logger.info(' Compute Is Email_to ')
+            _logger.info(f'Premitted Emails {permitted_emails} ')
             emails = []
             emails += permitted_emails
             emails += [partner.email for partner in rec.partner_ids if partner.email]
+            _logger.info(f'+ Partner Emails {emails} ')
             emails += [emp.work_email for emp in rec.employee_ids if emp.work_email]
+            _logger.info(f'+ Employee Emails {emails} ')
             emails += [rec.user_id.partner_id.email] if rec.user_id.partner_id.email else []
+            _logger.info(f'+ User Email {emails} ')
             rec.email_to = ','.join(set(emails))
+            _logger.info(f'Email To {rec.email_to} ')
 
 
     @api.depends('expiry_date')
@@ -93,7 +107,7 @@ class DocumentAlerts(models.Model):
         for rec in self:
             _logger.info(' Compute Is Sendable ')
             _logger.info(f'Not expired = {not rec.is_expired}')
-            _logger.info( f'Has emails = {rec.email_to or rec.email_cc}')
+            _logger.info( f'ُEmail cc = {rec.email_cc}')
             _logger.info(f'All condition = {(not rec.is_expired) and (rec.email_to or rec.email_cc) and rec.document_type_id}')
 
             rec.is_sendable = (not rec.is_expired) and (rec.email_to or rec.email_cc) and rec.document_type_id
@@ -104,12 +118,12 @@ class DocumentAlerts(models.Model):
         for rec in self:
             _logger.info(' Compute Is Expired ')
             _logger.info(f'Expiry date: {rec.expiry_date}')
-            _logger.info(f'Is Expired: {rec.expiry_date < fields.date.today()}')
-
+        
             if rec.expiry_date:
                 rec.is_expired = rec.expiry_date < fields.date.today()
             else:
                 rec.is_expired = True
+            _logger.info(f'Is Expired: {rec.is_expired}')
     
 
     def action_send_email(self):
