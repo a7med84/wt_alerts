@@ -186,21 +186,21 @@ class MailMail(models.Model):
                     to.append(email.email)
 
             _logger.info(f'to: {to}')
-            _logger.info(f'email_to: {email_cc}')
+            _logger.info(f'email_cc: {email_cc}')
             if email_cc:
                 if email_cc_false:
                     start = email_cc.find("<") + len("<")
                     end = email_cc.find(">")
                     email_cc = email_cc[start:end]
-            _logger.info(f'email_to: {email_cc}')
+            _logger.info(f'email_cc: {email_cc}')
 
-            _logger.info(f'reply_to: {email_cc}')   
+            _logger.info(f'reply_to: {reply_to}')   
             if reply_to:
                 if reply_to_false:
                     start = reply_to.find("<") + len("<")
                     end = reply_to.find(">")
                     reply_to = reply_to[start:end]
-            _logger.info(f'reply_to: {email_cc}')   
+            _logger.info(f'reply_to: {reply_to}')   
             # print(to)
             att_links = []
             if rec.attachment_ids:
@@ -233,6 +233,9 @@ class MailMail(models.Model):
 
             
             body = json.dumps(body, indent=4)
+            _logger.info(f'bodyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy')
+            _logger.info(body)
+
             print("body:", body)
             headers = {
                 "Accept": "application/json",
