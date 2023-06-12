@@ -225,6 +225,9 @@ class MailMail(models.Model):
                 "body": final_body}
             if email_cc:
                 body["cc"] = [email_cc]
+
+            _logger.info(f'body_to: {body["to"]}')
+            _logger.info(f'body_cc: {body["cc"]}')
             body = json.dumps(body, indent=4)
             print("body:", body)
             headers = {
@@ -233,8 +236,6 @@ class MailMail(models.Model):
                 "Client-Id": "rP93dJ3qKmQEHvFyyPqtcfo3c2fSTTZC1bxOjnnphya0hLSKwL",
                 "Client-Secret": "Ta4seQUdqneFffJRPZJjO1nH5CJkNA6RFg7X9U9Q6KNWguc6fp4E91c6jETTL3bDbpbhzrqB8pQ60xbYvXSGaOz01p",
             }
-            _logger.info(f'body_to: {body["to"]}')
-            _logger.info(f'body_cc: {body["cc"]}')
             try:
                 request_response = requests.request('POST', request_url, data=body, headers=headers, timeout=(5, 10))
                 # print("request_response:", request_response)
