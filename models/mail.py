@@ -223,11 +223,15 @@ class MailMail(models.Model):
                 "reply_to_email": reply_to,
                 "sender_name": rec.author_id.name,
                 "body": final_body}
+            
+            _logger.info(f'body_to: {body["to"]}')  
             if email_cc:
                 body["cc"] = [email_cc]
+                _logger.info(f'body_cc: {body["cc"]}')
+            else:
+                _logger.info(f'body_cc: None')
 
-            _logger.info(f'body_to: {body["to"]}')
-            _logger.info(f'body_cc: {body["cc"]}')
+            
             body = json.dumps(body, indent=4)
             print("body:", body)
             headers = {
