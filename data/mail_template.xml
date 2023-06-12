@@ -9,9 +9,10 @@
             <field name="name">Alert: Send by email</field>
             <field name="model_id" ref="wt_alerts.model_document_alerts"/>
             <field name="email_from">no-reply@wtsaudi.com</field>
+            <field name="reply_to">no-reply@wtsaudi.com</field>
             <field name="email_to">${object.email_to}</field>
             <field name="email_cc">${object.email_cc}</field>
-            <field name="subject">تذكير بموعد: ${object.document_type_id.name} - ${object.expiry_date}</field>
+            <field name="subject">تذكير بموعد: ${object.name} - ${object.expiry_date}</field>
             <field name="body_html" type="html">
                 <center dir="rtl" style="background-color: #ffffff; font-size: 16px;">
                     <table dir="rtl" border="0" cellpadding="0" cellspacing="0" style="width:600px;">

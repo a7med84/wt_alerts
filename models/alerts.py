@@ -81,18 +81,18 @@ class DocumentAlerts(models.Model):
     def _compute_email_to(self):
         permitted_emails = [user.partner_id.email for user in self.env.ref('wt_alerts.document_expiry_reminder_group').users if user.partner_id.email]
         for rec in self:
-            _logger.info(' Compute Is Email_to ')
-            _logger.info(f'Premitted Emails {permitted_emails} ')
+            # _logger.debug(' Compute Is Email_to ')
+            # _logger.info(f'Premitted Emails {permitted_emails} ')
             emails = []
             emails += permitted_emails
             emails += [partner.email for partner in rec.partner_ids if partner.email]
-            _logger.info(f'+ Partner Emails {emails} ')
+            # _logger.info(f'+ Partner Emails {emails} ')
             emails += [emp.work_email for emp in rec.employee_ids if emp.work_email]
-            _logger.info(f'+ Employee Emails {emails} ')
+            # _logger.info(f'+ Employee Emails {emails} ')
             emails += [rec.user_id.partner_id.email] if rec.user_id.partner_id.email else []
-            _logger.info(f'+ User Email {emails} ')
+            # _logger.info(f'+ User Email {emails} ')
             rec.email_to = ','.join(set(emails))
-            _logger.info(f'Email To {rec.email_to} ')
+            # _logger.info(f'Email To {rec.email_to} ')
 
 
     @api.depends('expiry_date')
@@ -105,25 +105,23 @@ class DocumentAlerts(models.Model):
     @api.depends('user_id', 'employee_ids', 'email_cc', 'document_type_id', 'is_expired')
     def _compute_is_sendable(self):
         for rec in self:
-            _logger.info(' Compute Is Sendable ')
-            _logger.info(f'Not expired = {not rec.is_expired}')
-            _logger.info( f'ُEmail cc = {rec.email_cc}')
-            _logger.info(f'All condition = {(not rec.is_expired) and (rec.email_to or rec.email_cc) and rec.document_type_id}')
-
+            # _logger.info(' Compute Is Sendable ')
+            # _logger.info(f'Not expired = {not rec.is_expired}')
+            # _logger.info( f'ُEmail cc = {rec.email_cc}')
+            # _logger.info(f'All condition = {(not rec.is_expired) and (rec.email_to or rec.email_cc) and rec.document_type_id}')
             rec.is_sendable = (not rec.is_expired) and (rec.email_to or rec.email_cc) and rec.document_type_id
 
     
     @api.depends('expiry_date')
     def _compute_is_expired(self):
         for rec in self:
-            _logger.info(' Compute Is Expired ')
-            _logger.info(f'Expiry date: {rec.expiry_date}')
-        
+            # _logger.info(' Compute Is Expired ')
+            # _logger.info(f'Expiry date: {rec.expiry_date}')
             if rec.expiry_date:
                 rec.is_expired = rec.expiry_date < fields.date.today()
             else:
                 rec.is_expired = True
-            _logger.info(f'Is Expired: {rec.is_expired}')
+            # _logger.info(f'Is Expired: {rec.is_expired}')
     
 
     def action_send_email(self):
