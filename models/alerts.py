@@ -86,8 +86,15 @@ class DocumentAlerts(models.Model):
     @api.depends('reminder_ids', 'user_id', 'employee_ids', 'email_cc')
     def _compute_is_sendable(self):
         for rec in self:
-            rec.is_sendable = self.email_to or self.email_cc
+            rec.is_sendable = (not self.is_expired) and (self.email_to or self.email_cc)
+
     
+    @property
+    def is_expired(self):
+        print(self.expiry_date, fields.date.today(), self.expiry_date < fields.date.today())
+        return self.expiry_date < fields.date.today()
+    
+
     def action_send_email(self):
         if self.is_sendable:
             values = {
@@ -100,7 +107,7 @@ class DocumentAlerts(models.Model):
 
     def document_exp_reminder(self):
         for alert in self.env['document.alerts'].search([]):
-            if [x for x in self.reminder_ids if x.due_date == self.expiry_date]:
+            if [x for x in alert.reminder_ids if x.due_date == alert.expiry_date]:
                 alert.action_send_email()
 
 
