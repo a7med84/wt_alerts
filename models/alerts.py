@@ -91,7 +91,7 @@ class DocumentAlerts(models.Model):
             # _logger.info(f'+ Employee Emails {emails} ')
             emails += [rec.user_id.partner_id.email] if rec.user_id.partner_id.email else []
             # _logger.info(f'+ User Email {emails} ')
-            rec.email_to = ','.join(set(emails))
+            rec.email_to = ','.join(set(emails)) or 'no-reply@wtsaudi.com'
             # _logger.info(f'Email To {rec.email_to} ')
 
 
@@ -175,4 +175,3 @@ class DaysReminderLine(models.Model):
     @property
     def due_date(self):
         return fields.date.today() + relativedelta(days=self.ndays)
-    
